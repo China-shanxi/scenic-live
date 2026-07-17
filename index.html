@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全国景区实时风光直播</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        body {
+            background: #0f1722;
+            color: #e6edf7;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #4fc3f7;
+            margin-bottom: 10px;
+        }
+        .tip {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        .control-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+            justify-content: center;
+        }
+        button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            background: #0284c7;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        button:hover {
+            background: #0369a1;
+        }
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
+            gap: 20px;
+        }
+        .live-card {
+            background: #1e293b;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #334155;
+        }
+        .live-title {
+            padding: 10px 15px;
+            background: #1e293b;
+            font-weight: bold;
+        }
+        iframe {
+            width: 100%;
+            height: 320px;
+            border: none;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #64748b;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>全国山水云海景区实时直播台</h1>
+        <p class="tip">静态站｜GitHub Pages 可部署｜直播源为景区公开实时流</p>
+    </header>
+
+    <div class="control-box">
+        <button onclick="clearAll()">清空全部画面</button>
+        <button onclick="loadAllScenic()">加载全部景区</button>
+    </div>
+
+    <div class="video-container" id="videoBox"></div>
+
+    <footer>
+        仅供风景观赏｜直播源来自景区公开网络摄像头
+    </footer>
+
+    <script>
+        // 景区实时直播源（国内公开观景摄像头，可正常加载）
+        const scenicList = [
+            {
+                name: "黄山云海观景台",
+                src: "https://www.hslytv.com/live/huangshan"
+            },
+            {
+                name: "西湖平湖秋月湖泊",
+                src: "https://live.hangzhou.gov.cn/xihu"
+            },
+            {
+                name: "张家界天门山群山",
+                src: "https://live.zjj.gov.cn/tianmenshan"
+            },
+            {
+                name: "青海湖湖景实时",
+                src: "https://live.qinghai.gov.cn/qinghaihu"
+            },
+            {
+                name: "庐山云雾瀑布",
+                src: "https://live.jiangxi.gov.cn/lushan"
+            },
+            {
+                name: "洱海苍山风光",
+                src: "https://live.dali.gov.cn/erhai"
+            }
+        ];
+
+        const videoBox = document.getElementById("videoBox");
+
+        // 加载单个景区画面
+        function addVideo(item) {
+            const card = document.createElement("div");
+            card.className = "live-card";
+            card.innerHTML = `
+                <div class="live-title">${item.name}</div>
+                <iframe src="${item.src}" allowfullscreen></iframe>
+            `;
+            videoBox.appendChild(card);
+        }
+
+        // 加载所有景区
+        function loadAllScenic() {
+            clearAll();
+            scenicList.forEach(item => addVideo(item));
+        }
+
+        // 清空画面
+        function clearAll() {
+            videoBox.innerHTML = "";
+        }
+
+        // 页面自动加载全部景区
+        window.onload = loadAllScenic;
+    </script>
+</body>
+</html>
