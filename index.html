@@ -99,22 +99,81 @@
     <script>
         // type: iframe 网页直播 | hls m3u8流媒体直播
         const scenicList = [
-            {
-                name: "黄山云海观景台",
-                type: "iframe",
-                src: "https://www.hslytv.com/live/huangshan"
-            },
-            {
-                name: "西湖平湖秋月湖泊",
-                type: "iframe",
-                src: "https://live.hangzhou.gov.cn/xihu"
-            },
-            {
-                name: "示例m3u8景区流",
-                type: "hls",
-                src: "https://xxx.com/live/scenic.m3u8"
-            }
-        ];
+  // 黄山系列（云海/山峰）
+  {
+    name: "黄山卧云峰实时",
+    type: "hls",
+    src: "http://gctxyc.liveplay.myqcloud.com/gc/wgw02_1/index.m3u8"
+  },
+  {
+    name: "黄山光明顶云海",
+    type: "hls",
+    src: "https://gcalic.v.myalicdn.com/gc/hsgmd_1/index.m3u8"
+  },
+
+  // 张家界系列（群山/峰林）
+  {
+    name: "张家界御笔峰",
+    type: "hls",
+    src: "https://gcalic.v.myalicdn.com/gc/zjjybf_1/index.m3u8"
+  },
+  {
+    name: "张家界阿凡达悬浮山",
+    type: "hls",
+    src: "https://gcalic.v.myalicdn.com/gc/zjjafdxfs_1/index.m3u8?contentid=2820180516001"
+  },
+  {
+    name: "张家界将军列队",
+    type: "hls",
+    src: "https://gctxyc.liveplay.myqcloud.com/gc/zjjjjdl_1/index.m3u8?contentid=2820180516001"
+  },
+
+  // 湖泊/水景系列
+  {
+    name: "桂林漓江山水",
+    type: "hls",
+    src: "https://gcalic.v.myalicdn.com/gc/gllj01_1/index.m3u8"
+  },
+  {
+    name: "云南大理崇圣寺三塔",
+    type: "hls",
+    src: "https://gcalic.v.myalicdn.com/gc/dlst03_1/index.m3u8"
+  },
+  {
+    name: "青海湖海西平台",
+    type: "hls",
+    src: "http://gctxyc.liveplay.myqcloud.com/gc/xjtcdhsz_1/index.m3u8"
+  },
+
+  // 名山/云海系列
+  {
+    name: "江西武功山云顶",
+    type: "hls",
+    src: "https://gctxyc.liveplay.myqcloud.com/gc/jyg04_1/index.m3u8?contentid=2820180516001"
+  },
+  {
+    name: "安徽九华山风景区",
+    type: "hls",
+    src: "https://gcalic.v.myalicdn.com/gc/jhs05_1/index.m3u8"
+  },
+  {
+    name: "广西玉林大容山莲花山顶",
+    type: "hls",
+    src: "https://gcalic.v.myalicdn.com/gc/drs01_1/index.m3u8"
+  },
+
+  // 长城/人文风光
+  {
+    name: "北京黄花城水长城01",
+    type: "hls",
+    src: "https://gcalic.v.myalicdn.com/gc/wgw01_1/index.m3u8"
+  },
+  {
+    name: "北京黄花城水长城02",
+    type: "hls",
+    src: "http://gctxyc.liveplay.myqcloud.com/gc/wgw02_1/index.m3u8"
+  }
+];
 
         const videoBox = document.getElementById("videoBox");
 
